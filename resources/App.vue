@@ -94,8 +94,8 @@ export default {
 </script>
 
 <style>
-/*@import url('https://fonts.googleapis.com/css?family=Zilla+Slab');*/
-/*@import url('https://fonts.googleapis.com/css?family=Raleway');*/
+@import url('https://fonts.googleapis.com/css?family=Zilla+Slab');
+@import url('https://fonts.googleapis.com/css?family=Raleway');
 .brand-logo {
   font-family: 'Zilla Slab', serif;
   font-size: 36px!important;

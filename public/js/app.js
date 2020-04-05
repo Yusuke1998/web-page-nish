@@ -7151,10 +7151,11 @@ exports.push([module.i, "@charset \"UTF-8\";\n/*!\n* Vuetify v2.2.8\n* Forged by
 
 exports = module.exports = __webpack_require__(/*! ../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
 // imports
-
+exports.push([module.i, "@import url(https://fonts.googleapis.com/css?family=Zilla+Slab);", ""]);
+exports.push([module.i, "@import url(https://fonts.googleapis.com/css?family=Raleway);", ""]);
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\r\n/*@import url('https://fonts.googleapis.com/css?family=Zilla+Slab');*/\r\n/*@import url('https://fonts.googleapis.com/css?family=Raleway');*/\n.brand-logo {\r\n  font-family: 'Zilla Slab', serif;\r\n  font-size: 36px!important;\r\n  font-weight: bold!important;\r\n  color: #2c3e50;\n}\n.brand-spacer {\r\n  margin-left: -10px!important;\n}\n.brand-icon {\r\n  margin-top: -3px;\n}\n.accented-text {\r\n  font-family: 'Raleway', sans-serif;\n}\np {\r\n  font-family: 'Raleway', sans-serif;\n}\n.hero-text-header {\r\n  font-family: 'Zilla Slab', serif;\n}\n.hero-text-sub {\r\n  font-family: 'Raleway', sans-serif;\n}\n.brand-text {\r\n  font-weight: bold;\n}\r\n", ""]);
+exports.push([module.i, "\n.brand-logo {\r\n  font-family: 'Zilla Slab', serif;\r\n  font-size: 36px!important;\r\n  font-weight: bold!important;\r\n  color: #2c3e50;\n}\n.brand-spacer {\r\n  margin-left: -10px!important;\n}\n.brand-icon {\r\n  margin-top: -3px;\n}\n.accented-text {\r\n  font-family: 'Raleway', sans-serif;\n}\np {\r\n  font-family: 'Raleway', sans-serif;\n}\n.hero-text-header {\r\n  font-family: 'Zilla Slab', serif;\n}\n.hero-text-sub {\r\n  font-family: 'Raleway', sans-serif;\n}\n.brand-text {\r\n  font-weight: bold;\n}\r\n", ""]);
 
 // exports
 
