@@ -1,10 +1,14 @@
 <template>
-  <v-toolbar class="white">
-    <v-spacer class="hidden-sm-and-up brand-spacer"/>
-    <v-toolbar-title class="text-xs-center brand-logo">
+  <v-toolbar 
+    class="white">
+    <v-spacer 
+      class="hidden-sm-and-up brand-spacer"/>
+    <v-toolbar-title 
+      class="text-xs-center brand-logo">
       <v-icon 
         link :to="{ path: '/' }"
-        x-large class="primary--text hidden-sm-and-down brand-icon">filter_hdr
+        x-large class="primary--text hidden-sm-and-down brand-icon">
+        mdi-plus
       </v-icon> 
       {{title}}
       <span 
@@ -14,7 +18,8 @@
       </span>
     </v-toolbar-title>
     <v-spacer/>
-    <v-toolbar-items class="hidden-xs-only">
+    <v-toolbar-items 
+      class="hidden-xs-only">
       <v-btn 
         v-for="item in menu" 
         :key="item.name"
@@ -29,11 +34,20 @@
 <script>
 export default {
   name: 'top-nav',
-  props: [
-    'menu',
-    'title',
-    'subtitle'
-  ]
+  props: {
+    menu:{
+      required:true,
+      type:Array
+    },
+    title:{
+      required:true,
+      type:String
+    },
+    subtitle:{
+      required:true,
+      type:String
+    }
+  }
 }
 </script>
 

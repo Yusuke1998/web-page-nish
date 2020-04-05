@@ -3,16 +3,22 @@
     <top-nav 
         :title="title" 
         :subtitle="subtitle" 
-        :menu="menu"/>
+        :menu="menu"
+    />
     <v-content>
-      <hero/>
+      <hero 
+        :titleXs="hero.titleXs" 
+        :titleMd="hero.titleMd" 
+        :titleLg="hero.titleLg"
+      />
       <mobile-menu 
         :title="title" 
         :subtitle="subtitle" 
         :menu="menu" 
-        class="hidden-sm-and-up"/>
+        class="hidden-sm-and-up"
+      />
       <v-content>
-        <v-container>
+        <v-container id="ver-mas">
           <transition name="fade">
             <router-view/>
           </transition>
@@ -33,6 +39,11 @@ export default {
   data () {
     return {
       title: 'Luis',
+      hero: {
+        titleXs:"Soluciones Informaticas",
+        titleMd:"Soporte tecnico de calidad",
+        titleLg:"Servicio especializado"
+      },
       subtitle: 'Machado',
       footerText: 'Inversiones Luis Machado',
       menu: [
@@ -57,6 +68,18 @@ export default {
         {
           name: 'Contactame',
           href: 'mailto:steve@islandcivil.com'
+        },
+        {
+          name: 'Facebook',
+          href: 'luis machado'
+        },
+        {
+          name: 'Whatsapp',
+          href: '+58123456789'
+        },
+        {
+          name: 'Telegram',
+          href: '+58123456789'
         }
       ]
     }
@@ -87,11 +110,6 @@ export default {
 }
 .accented-text {
   font-family: 'Raleway', sans-serif;
-}
-.product-title {
-  font-family: 'Raleway', sans-serif;
-  font-weight: bold!important;
-  color: #2c3e50;
 }
 p {
   font-family: 'Raleway', sans-serif;

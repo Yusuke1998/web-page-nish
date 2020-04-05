@@ -6,14 +6,21 @@
       justify-center
       class="white--text"
     >
-      <div class="subheading mb-1 hero-text-sub text-xs-center">Civil | Geotechnical | Mining</div>
-      <p class="white--text hero-text-header mb-2 display-2 text-xs-center">Unlock the power of your engineering data</p>
-      <div class="subheading mb-3 hero-text-sub text-xs-center">Find out how <span class="brand-text">ISLAND Civil</span> can help you <span class="brand-text">win more contracts</span> and <span class="brand-text">deliver better solutions</span> for your clients</div>
+      <div class="subheading mb-1 hero-text-sub text-xs-center">
+        {{titleXs}}
+      </div>
+      <p class="white--text hero-text-header mb-2 display-2 text-xs-center">
+        {{titleLg}}
+      </p>
+      <div class="subheading mb-3 hero-text-sub text-xs-center">
+        {{titleMd}}
+      </div>
       <v-btn
-        class="mt-3 green darken-1 accented-text" dark
-        href="#earthworks"
+        class="mt-3 green darken-1 accented-text" 
+        dark
+        href="#ver-mas"
       >
-        Learn More
+        Ver mas
       </v-btn>
     </v-layout>
   </v-parallax>
@@ -21,6 +28,20 @@
 
 <script>
 export default {
+  props:{
+    titleXs:{
+      type:String,
+      required:true
+    },
+    titleMd:{
+      type:String,
+      required:true
+    },
+    titleLg:{
+      type:String,
+      required:true
+    }
+  },
   name:'hero'
 }
 </script>

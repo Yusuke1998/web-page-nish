@@ -6,8 +6,11 @@ import swal from 'sweetalert';
 import VueRouter from 'vue-router';
 import axios from 'axios';
 import VueAxios from 'vue-axios';
-import router from './router.js';
-import eventBus from './plugins/event-bus.js';
+import router from './router';
+import eventBus from './plugins/event-bus';
+import Vuex from 'vuex';
+import Store from './store'
+
 require('./bootstrap');
 window.Vue = require('vue');
 
@@ -31,13 +34,17 @@ Vue.use(Vuetify,
     }
 })
 Vue.use(eventBus);
+Vue.use(Vuex);
 /* FIN DE PLUGINS */
+
+const store = new Vuex.Store(Store)
 
 new Vue({
     vuetify : new Vuetify,
     router,
+    store,
     methods:{
-    	loading(name, content, time = 3000){
+    	loading(name, content, time = 2000){
             swal({
                 title:name,
                 text:content,
@@ -51,8 +58,7 @@ new Vue({
             })
         },
         getImgUrl(img){
-          return '';
-          // return require('@/assets/' + img)
+          return `/assets/${img}`
         }
     },
     render: h=>h(App)

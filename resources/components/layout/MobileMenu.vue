@@ -5,7 +5,8 @@
         <v-list-tile v-for="item in menu" :key="item.name">
           <v-list-tile-content>
             <v-btn 
-              :href="item.href" 
+              :href="item.href"
+              link :to="{ path: item.href }"
               flat 
               class="blue--text text--darken-2 accented-text">
               {{ item.name }}
