@@ -9,7 +9,7 @@
         :key="item.name">
         <p class="text-center">
           <a 
-          :href="item.href">{{item.name}}</a>
+            :href="item.url">{{item.name}}</a>
         </p>
       </v-col>
       <v-col cols="12">

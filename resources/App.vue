@@ -1,15 +1,16 @@
 <template>
   <v-app>
     <top-nav 
-        :title="title" 
-        :subtitle="subtitle" 
+        :title="getConfigsData.title_web" 
+        :subtitle="getConfigsData.subtitle_web" 
         :menu="menu"
     />
     <v-content>
       <hero 
-        :titleXs="hero.titleXs" 
-        :titleMd="hero.titleMd" 
-        :titleLg="hero.titleLg"
+        :img="getConfigsData.img_parallax"
+        :titleLg="getConfigsData.title_parallax"
+        :titleMd="getConfigsData.text_parallax" 
+        :titleXs="getConfigsData.subtitle_parallax" 
       />
       <mobile-menu 
         :title="title" 
@@ -24,28 +25,32 @@
           </transition>
         </v-container>
       </v-content>
-      <ic-footer :list="footer" :text="footerText"/>
+      <ic-footer :list="getConfigsData.networks" :text="getConfigsData.text_footer"/>
     </v-content>
   </v-app>
 </template>
 
 <script>
+import { mapState, mapActions, mapMutations } from 'vuex'
+
 import TopNav from './components/layout/TopNav'
 import MobileMenu from './components/layout/MobileMenu'
 import Hero from './components/layout/Hero'
 import Footer from './components/layout/Footer'
+
 export default {
   name: 'App',
+  created(){
+    this.getConfigs()
+  },
+  computed:{
+    ...mapState({
+      isLoggedIn: ({ auth: { isLoggedIn } }) => isLoggedIn,
+      getConfigsData: (getConfigsData) => getConfigsData
+    })
+  },
   data () {
     return {
-      title: 'Luis',
-      hero: {
-        titleXs:"Soluciones Informaticas",
-        titleMd:"Soporte tecnico de calidad",
-        titleLg:"Servicio especializado"
-      },
-      subtitle: 'Machado',
-      footerText: 'Inversiones Luis Machado',
       menu: [
         {
           name: 'Servicios',
@@ -63,24 +68,6 @@ export default {
           name: 'Demostraciones',
           href: 'demostraciones'
         }
-      ],
-      footer: [
-        {
-          name: 'Contactame',
-          href: 'mailto:steve@islandcivil.com'
-        },
-        {
-          name: 'Facebook',
-          href: 'luis machado'
-        },
-        {
-          name: 'Whatsapp',
-          href: '+58123456789'
-        },
-        {
-          name: 'Telegram',
-          href: '+58123456789'
-        }
       ]
     }
   },
@@ -89,13 +76,16 @@ export default {
     'mobile-menu': MobileMenu,
     'hero': Hero,
     'ic-footer': Footer
+  },
+  methods: {
+    ...mapActions({
+      getConfigs: 'getConfigs'
+    })
   }
 }
 </script>
 
 <style>
-@import url('https://fonts.googleapis.com/css?family=Zilla+Slab');
-@import url('https://fonts.googleapis.com/css?family=Raleway');
 .brand-logo {
   font-family: 'Zilla Slab', serif;
   font-size: 36px!important;

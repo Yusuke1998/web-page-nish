@@ -1,5 +1,5 @@
 <template>
-  <v-parallax :src="$root.getImgUrl('dam3.jpg')">
+  <v-parallax :src="`assets/${img}`">
     <v-layout
       column
       align-center
@@ -29,6 +29,10 @@
 <script>
 export default {
   props:{
+    img:{
+      type:String,
+      required:true
+    },
     titleXs:{
       type:String,
       required:true

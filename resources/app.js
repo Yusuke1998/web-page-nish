@@ -6,7 +6,7 @@ import swal from 'sweetalert';
 import VueRouter from 'vue-router';
 import axios from 'axios';
 import VueAxios from 'vue-axios';
-import router from './router';
+import {routes} from './routes';
 import eventBus from './plugins/event-bus';
 import Vuex from 'vuex';
 import Store from './store'
@@ -14,10 +14,6 @@ import Store from './store'
 require('./bootstrap');
 window.Vue = require('vue');
 
-// DECLARANDO COMPONENTES
-// FIN COMPONENTES
-
-/* PLUGINS */
 Vue.use(Vuetify,
 {
     icons: {
@@ -33,11 +29,34 @@ Vue.use(Vuetify,
       warning: '#FFC107'
     }
 })
+
 Vue.use(eventBus);
 Vue.use(Vuex);
-/* FIN DE PLUGINS */
+Vue.use(VueRouter)
 
 const store = new Vuex.Store(Store)
+const router = new VueRouter({
+  routes,
+  mode:'history'
+})
+
+router.beforeEach((to, from, next) => {
+  const auth = to.matched.some(record => record.meta.requiresAuth);
+  const logued = store.state.auth.isLoggedIn
+
+  if (auth && !logued)
+  {
+    next('/admin');
+  }
+  else if(to.path == '/admin' && logued) 
+  {
+    next('/administrar')
+  }
+  else
+  {
+    next()
+  }
+})
 
 new Vue({
     vuetify : new Vuetify,
@@ -56,9 +75,6 @@ new Vue({
                 closeOnClickOutside: false,
                 timer: time
             })
-        },
-        getImgUrl(img){
-          return `/assets/${img}`
         }
     },
     render: h=>h(App)
