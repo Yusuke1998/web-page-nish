@@ -64,18 +64,18 @@ new Vue({
     store,
     methods:{
     	loading(name, content, time = 2000){
-            swal({
-                title:name,
-                text:content,
-                button:{
-                    text: "Ok!",
-                    closeModal: false,
-                },
-                icon:'/imgDefault/spin.gif',
-                closeOnClickOutside: false,
-                timer: time
-            })
-        }
+        swal({
+            title:name,
+            text:content,
+            button:{
+                text: "Ok!",
+                closeModal: false,
+            },
+            icon:'/imgDefault/spin.gif',
+            closeOnClickOutside: false,
+            timer: time
+        })
+      }
     },
     render: h=>h(App)
 }).$mount('#app');

@@ -10,8 +10,6 @@ class CreateConfigsTable extends Migration
     {
         Schema::create('configs', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('logo')
-                        ->default('logo.png');
             $table->string('title_web')
                         ->default('title_web');
             $table->string('subtitle_web')

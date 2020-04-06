@@ -13,8 +13,8 @@
         :titleXs="getConfigsData.subtitle_parallax" 
       />
       <mobile-menu 
-        :title="title" 
-        :subtitle="subtitle" 
+        :title="getConfigsData.title_web" 
+        :subtitle="getConfigsData.subtitle_web" 
         :menu="menu" 
         class="hidden-sm-and-up"
       />

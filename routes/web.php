@@ -18,5 +18,5 @@ $router->group(['prefix' => 'api'], function ($router){
 
     // Configuraciones
     $router->get('configs', 'ConfigsController@index');
-    $router->put('configs/update', 'ConfigsController@update');
+    $router->post('configs/update', 'ConfigsController@update');
 });

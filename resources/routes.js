@@ -38,7 +38,7 @@ export const routes = [
     component: Login
   },
   {
-    path: '/administrar',
+    path: '/configurar',
     name: 'admin',
     component: Admin,
     meta:{

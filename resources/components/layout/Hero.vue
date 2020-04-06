@@ -1,5 +1,5 @@
 <template>
-  <v-parallax :src="`assets/${img}`">
+  <v-parallax :src="`assets/${img==''||null||undefined?'img_parallax.jpg':img}`">
     <v-layout
       column
       align-center

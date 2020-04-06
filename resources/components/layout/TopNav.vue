@@ -29,9 +29,16 @@
       </v-btn>
       <v-btn 
         v-if="isLoggedIn"
-        @click.prevent="setLogout()"
+        link :to="{ name: 'admin' }"
         right
         class="blue--text text--darken-4 accented-text">
+        Configuracion
+      </v-btn>
+      <v-btn 
+        v-if="isLoggedIn"
+        @click.prevent="setLogout()"
+        right
+        class="blue--text text--darken-3 accented-text">
         Salir
       </v-btn>
     </v-toolbar-items>

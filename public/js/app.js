@@ -2097,6 +2097,115 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/components/admin/Config.vue?vue&type=script&lang=js&":
+/*!********************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/components/admin/Config.vue?vue&type=script&lang=js& ***!
+  \********************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])({
+    isLoggedIn: function isLoggedIn(_ref) {
+      var _isLoggedIn = _ref.auth.isLoggedIn;
+      return _isLoggedIn;
+    },
+    getConfigsData: function getConfigsData(_getConfigsData) {
+      return _getConfigsData;
+    }
+  })),
+  data: function data() {
+    return {
+      configs: {
+        networks: [],
+        logo: '',
+        title_web: '',
+        subtitle_web: '',
+        img_parallax: '',
+        title_parallax: '',
+        subtitle_parallax: '',
+        text_parallax: '',
+        text_footer: ''
+      }
+    };
+  },
+  components: {},
+  methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])({
+    setUpdate: 'setUpdate',
+    getConfigs: 'getConfigs'
+  }), {
+    update: function update() {
+      this.$store.dispatch('setUpdate', this.configs);
+    }
+  })
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/components/auth/Login.vue?vue&type=script&lang=js&":
 /*!******************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/components/auth/Login.vue?vue&type=script&lang=js& ***!
@@ -2456,6 +2565,13 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 //
 //
 //
@@ -2476,9 +2592,48 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'mobile-menu',
-  props: ['menu']
+  data: function data() {
+    return {};
+  },
+  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])({
+    isLoggedIn: function isLoggedIn(_ref) {
+      var _isLoggedIn = _ref.auth.isLoggedIn;
+      return _isLoggedIn;
+    }
+  })),
+  props: {
+    menu: {
+      required: true,
+      type: Array
+    }
+  },
+  methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])({
+    logout: 'logout'
+  }), {
+    setLogout: function setLogout() {
+      this.logout();
+      this.$router.push({
+        path: '/'
+      });
+    }
+  })
 });
 
 /***/ }),
@@ -2499,6 +2654,13 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -2588,17 +2750,25 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _components_admin_Config__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../components/admin/Config */ "./resources/components/admin/Config.vue");
 //
 //
 //
 //
 //
 //
+//
+//
+//
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'admin',
   mounted: function mounted() {},
   data: function data() {
     return {};
+  },
+  components: {
+    'configs': _components_admin_Config__WEBPACK_IMPORTED_MODULE_0__["default"]
   }
 });
 
@@ -39795,7 +39965,11 @@ var render = function() {
           _vm._v(" "),
           _c("mobile-menu", {
             staticClass: "hidden-sm-and-up",
-            attrs: { title: _vm.title, subtitle: _vm.subtitle, menu: _vm.menu }
+            attrs: {
+              title: _vm.getConfigsData.title_web,
+              subtitle: _vm.getConfigsData.subtitle_web,
+              menu: _vm.menu
+            }
           }),
           _vm._v(" "),
           _c(
@@ -39824,6 +39998,232 @@ var render = function() {
               text: _vm.getConfigsData.text_footer
             }
           })
+        ],
+        1
+      )
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/components/admin/Config.vue?vue&type=template&id=5788cb1a&":
+/*!************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/components/admin/Config.vue?vue&type=template&id=5788cb1a& ***!
+  \************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "v-col",
+    {
+      staticClass: "primary",
+      attrs: { md: "12", xs: "12", sm: "12", lg: "12" }
+    },
+    [
+      _c(
+        "v-card",
+        [
+          _c(
+            "v-card-text",
+            [
+              _c(
+                "v-container",
+                { staticClass: "px-3", attrs: { fluid: "" } },
+                [
+                  _c(
+                    "v-layout",
+                    { attrs: { row: "", wrap: "" } },
+                    [
+                      _c(
+                        "v-flex",
+                        { attrs: { xs6: "" } },
+                        [
+                          _c("v-text-field", {
+                            attrs: { label: "Titulo de la Web" },
+                            model: {
+                              value: (_vm.configs.title_web =
+                                _vm.$store.state.title_web),
+                              callback: function($$v) {
+                                _vm.$set(
+                                  (_vm.configs.title_web = _vm.$store.state),
+                                  "title_web",
+                                  $$v
+                                )
+                              },
+                              expression:
+                                "configs.title_web=$store.state.title_web"
+                            }
+                          })
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "v-flex",
+                        { attrs: { xs6: "" } },
+                        [
+                          _c("v-text-field", {
+                            attrs: { label: "Subtitulo de la web" },
+                            model: {
+                              value: (_vm.configs.subtitle_web =
+                                _vm.$store.state.subtitle_web),
+                              callback: function($$v) {
+                                _vm.$set(
+                                  (_vm.configs.subtitle_web = _vm.$store.state),
+                                  "subtitle_web",
+                                  $$v
+                                )
+                              },
+                              expression:
+                                "configs.subtitle_web=$store.state.subtitle_web"
+                            }
+                          })
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "v-flex",
+                        { attrs: { xs6: "" } },
+                        [
+                          _c("v-text-field", {
+                            attrs: { label: "Titulo Paralax" },
+                            model: {
+                              value: (_vm.configs.title_parallax =
+                                _vm.$store.state.title_parallax),
+                              callback: function($$v) {
+                                _vm.$set(
+                                  (_vm.configs.title_parallax =
+                                    _vm.$store.state),
+                                  "title_parallax",
+                                  $$v
+                                )
+                              },
+                              expression:
+                                "configs.title_parallax=$store.state.title_parallax"
+                            }
+                          })
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "v-flex",
+                        { attrs: { xs6: "" } },
+                        [
+                          _c("v-text-field", {
+                            attrs: { label: "Subtitulo Paralax" },
+                            model: {
+                              value: (_vm.configs.subtitle_parallax =
+                                _vm.$store.state.subtitle_parallax),
+                              callback: function($$v) {
+                                _vm.$set(
+                                  (_vm.configs.subtitle_parallax =
+                                    _vm.$store.state),
+                                  "subtitle_parallax",
+                                  $$v
+                                )
+                              },
+                              expression:
+                                "configs.subtitle_parallax=$store.state.subtitle_parallax"
+                            }
+                          })
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "v-flex",
+                        { attrs: { xs12: "" } },
+                        [
+                          _c("v-text-field", {
+                            attrs: { label: "Descripcion Paralax" },
+                            model: {
+                              value: (_vm.configs.text_parallax =
+                                _vm.$store.state.text_parallax),
+                              callback: function($$v) {
+                                _vm.$set(
+                                  (_vm.configs.text_parallax =
+                                    _vm.$store.state),
+                                  "text_parallax",
+                                  $$v
+                                )
+                              },
+                              expression:
+                                "configs.text_parallax=$store.state.text_parallax"
+                            }
+                          })
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "v-flex",
+                        { attrs: { xs12: "" } },
+                        [
+                          _c("v-text-field", {
+                            attrs: { label: "Texto del pie de Pagina" },
+                            model: {
+                              value: (_vm.configs.text_footer =
+                                _vm.$store.state.text_footer),
+                              callback: function($$v) {
+                                _vm.$set(
+                                  (_vm.configs.text_footer = _vm.$store.state),
+                                  "text_footer",
+                                  $$v
+                                )
+                              },
+                              expression:
+                                "configs.text_footer=$store.state.text_footer"
+                            }
+                          })
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  )
+                ],
+                1
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "v-card-actions",
+            { staticClass: "float-right" },
+            [
+              _c(
+                "v-btn",
+                {
+                  attrs: { dark: "" },
+                  on: {
+                    click: function($event) {
+                      $event.preventDefault()
+                      return _vm.update($event)
+                    }
+                  }
+                },
+                [_vm._v("\n\t\t\t\t\tActualizar\n\t\t\t\t")]
+              )
+            ],
+            1
+          )
         ],
         1
       )
@@ -40515,7 +40915,13 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "v-parallax",
-    { attrs: { src: "assets/" + _vm.img } },
+    {
+      attrs: {
+        src:
+          "assets/" +
+          (_vm.img == "" || null || undefined ? "img_parallax.jpg" : _vm.img)
+      }
+    },
     [
       _c(
         "v-layout",
@@ -40618,7 +41024,41 @@ var render = function() {
                               "\n          "
                           )
                         ]
-                      )
+                      ),
+                      _vm._v(" "),
+                      _vm.isLoggedIn
+                        ? _c(
+                            "v-btn",
+                            {
+                              staticClass:
+                                "blue--text text--darken-4 accented-text",
+                              attrs: {
+                                link: "",
+                                to: { name: "admin" },
+                                right: ""
+                              }
+                            },
+                            [_vm._v("\n            Configuracion\n          ")]
+                          )
+                        : _vm._e(),
+                      _vm._v(" "),
+                      _vm.isLoggedIn
+                        ? _c(
+                            "v-btn",
+                            {
+                              staticClass:
+                                "blue--text text--darken-3 accented-text",
+                              attrs: { right: "" },
+                              on: {
+                                click: function($event) {
+                                  $event.preventDefault()
+                                  return _vm.setLogout()
+                                }
+                              }
+                            },
+                            [_vm._v("\n            Salir\n          ")]
+                          )
+                        : _vm._e()
                     ],
                     1
                   )
@@ -40711,6 +41151,17 @@ var render = function() {
                 "v-btn",
                 {
                   staticClass: "blue--text text--darken-4 accented-text",
+                  attrs: { link: "", to: { name: "admin" }, right: "" }
+                },
+                [_vm._v("\n      Configuracion\n    ")]
+              )
+            : _vm._e(),
+          _vm._v(" "),
+          _vm.isLoggedIn
+            ? _c(
+                "v-btn",
+                {
+                  staticClass: "blue--text text--darken-3 accented-text",
                   attrs: { right: "" },
                   on: {
                     click: function($event) {
@@ -40751,7 +41202,23 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [_vm._v("\n\tAdmin\n")])
+  return _c(
+    "v-row",
+    { attrs: { cols: "12" } },
+    [
+      _c(
+        "v-col",
+        {
+          staticClass: "text-center",
+          attrs: { md: "12", xs: "12", sm: "12", lg: "12", dark: "" }
+        },
+        [_c("span", [_vm._v("CONFIGURACION")])]
+      ),
+      _vm._v(" "),
+      _c("configs")
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -98413,6 +98880,75 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 /***/ }),
 
+/***/ "./resources/components/admin/Config.vue":
+/*!***********************************************!*\
+  !*** ./resources/components/admin/Config.vue ***!
+  \***********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Config_vue_vue_type_template_id_5788cb1a___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Config.vue?vue&type=template&id=5788cb1a& */ "./resources/components/admin/Config.vue?vue&type=template&id=5788cb1a&");
+/* harmony import */ var _Config_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Config.vue?vue&type=script&lang=js& */ "./resources/components/admin/Config.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _Config_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _Config_vue_vue_type_template_id_5788cb1a___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _Config_vue_vue_type_template_id_5788cb1a___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/components/admin/Config.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/components/admin/Config.vue?vue&type=script&lang=js&":
+/*!************************************************************************!*\
+  !*** ./resources/components/admin/Config.vue?vue&type=script&lang=js& ***!
+  \************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Config_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./Config.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/components/admin/Config.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Config_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/components/admin/Config.vue?vue&type=template&id=5788cb1a&":
+/*!******************************************************************************!*\
+  !*** ./resources/components/admin/Config.vue?vue&type=template&id=5788cb1a& ***!
+  \******************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Config_vue_vue_type_template_id_5788cb1a___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./Config.vue?vue&type=template&id=5788cb1a& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/components/admin/Config.vue?vue&type=template&id=5788cb1a&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Config_vue_vue_type_template_id_5788cb1a___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Config_vue_vue_type_template_id_5788cb1a___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./resources/components/auth/Login.vue":
 /*!*********************************************!*\
   !*** ./resources/components/auth/Login.vue ***!
@@ -99671,7 +100207,7 @@ var routes = [{
   name: 'login',
   component: _pages_LoginPage__WEBPACK_IMPORTED_MODULE_5__["default"]
 }, {
-  path: '/administrar',
+  path: '/configurar',
   name: 'admin',
   component: _pages_AdminPage__WEBPACK_IMPORTED_MODULE_6__["default"],
   meta: {
@@ -99787,6 +100323,42 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             }
           }
         }, _callee, null, [[0, 7]]);
+      }))();
+    },
+    setUpdate: function setUpdate(_ref2, payload) {
+      var commit = _ref2.commit;
+      return _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
+        var conf, data;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                _context2.prev = 0;
+                _context2.next = 3;
+                return axios.post('api/configs/update', payload);
+
+              case 3:
+                conf = _context2.sent.data;
+                commit('setConfigs', conf);
+                _context2.next = 11;
+                break;
+
+              case 7:
+                _context2.prev = 7;
+                _context2.t0 = _context2["catch"](0);
+                data = Object.values(_context2.t0.response.data);
+                data.forEach(function (element) {
+                  console.log(element.toString());
+                });
+
+              case 11:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2, null, [[0, 7]]);
       }))();
     }
   },

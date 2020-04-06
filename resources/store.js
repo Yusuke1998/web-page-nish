@@ -56,6 +56,21 @@ export default {
 		    } catch (error) {
 		      console.log('error al obtener las configuraciones')
 		    }
+	  	},
+
+	  	async setUpdate({ commit }, payload) {
+	  		try 
+	  		{
+		      const conf = (await axios.post('api/configs/update', payload)).data
+		      commit('setConfigs', conf)
+		    }
+		    catch (e)
+		    {
+		    	let data = Object.values(e.response.data)
+				data.forEach(element => {
+					console.log(element.toString())
+				});
+		    }
 	  	}
 	},
 	modules: {
