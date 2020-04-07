@@ -2106,13 +2106,56 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+
+
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -2169,23 +2212,42 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])({
-    isLoggedIn: function isLoggedIn(_ref) {
-      var _isLoggedIn = _ref.auth.isLoggedIn;
-      return _isLoggedIn;
-    },
-    getConfigsData: function getConfigsData(_getConfigsData) {
-      return _getConfigsData;
+  props: {
+    title: {
+      type: String,
+      required: true
     }
-  })),
+  },
+  mounted: function mounted() {
+    var _this = this;
+
+    return _asyncToGenerator(
+    /*#__PURE__*/
+    _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              _context.next = 2;
+              return _this.getConfigs();
+
+            case 2:
+              _context.next = 4;
+              return _this.setData();
+
+            case 4:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee);
+    }))();
+  },
   data: function data() {
     return {
       configs: {
-        networks: [],
-        logo: '',
         title_web: '',
         subtitle_web: '',
-        img_parallax: '',
         title_parallax: '',
         subtitle_parallax: '',
         text_parallax: '',
@@ -2193,13 +2255,22 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       }
     };
   },
-  components: {},
-  methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])({
+  methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapActions"])({
     setUpdate: 'setUpdate',
     getConfigs: 'getConfigs'
   }), {
     update: function update() {
-      this.$store.dispatch('setUpdate', this.configs);
+      this.setUpdate(this.configs);
+    },
+    setData: function setData() {
+      this.configs = {
+        title_web: this.$store.state.title_web,
+        subtitle_web: this.$store.state.subtitle_web,
+        title_parallax: this.$store.state.title_parallax,
+        subtitle_parallax: this.$store.state.subtitle_parallax,
+        text_parallax: this.$store.state.text_parallax,
+        text_footer: this.$store.state.text_footer
+      };
     }
   })
 });
@@ -2751,9 +2822,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_admin_Config__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../components/admin/Config */ "./resources/components/admin/Config.vue");
-//
-//
-//
 //
 //
 //
@@ -40029,14 +40097,17 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "v-col",
-    {
-      staticClass: "primary",
-      attrs: { md: "12", xs: "12", sm: "12", lg: "12" }
-    },
+    { staticClass: "gray", attrs: { md: "12", xs: "12", sm: "12", lg: "12" } },
     [
       _c(
         "v-card",
         [
+          _c("v-card-title", [
+            _c("span", { staticClass: "text-center mx-auto" }, [
+              _vm._v(_vm._s(_vm.title))
+            ])
+          ]),
+          _vm._v(" "),
           _c(
             "v-card-text",
             [
@@ -40055,17 +40126,11 @@ var render = function() {
                           _c("v-text-field", {
                             attrs: { label: "Titulo de la Web" },
                             model: {
-                              value: (_vm.configs.title_web =
-                                _vm.$store.state.title_web),
+                              value: _vm.configs.title_web,
                               callback: function($$v) {
-                                _vm.$set(
-                                  (_vm.configs.title_web = _vm.$store.state),
-                                  "title_web",
-                                  $$v
-                                )
+                                _vm.$set(_vm.configs, "title_web", $$v)
                               },
-                              expression:
-                                "configs.title_web=$store.state.title_web"
+                              expression: "configs.title_web"
                             }
                           })
                         ],
@@ -40079,17 +40144,11 @@ var render = function() {
                           _c("v-text-field", {
                             attrs: { label: "Subtitulo de la web" },
                             model: {
-                              value: (_vm.configs.subtitle_web =
-                                _vm.$store.state.subtitle_web),
+                              value: _vm.configs.subtitle_web,
                               callback: function($$v) {
-                                _vm.$set(
-                                  (_vm.configs.subtitle_web = _vm.$store.state),
-                                  "subtitle_web",
-                                  $$v
-                                )
+                                _vm.$set(_vm.configs, "subtitle_web", $$v)
                               },
-                              expression:
-                                "configs.subtitle_web=$store.state.subtitle_web"
+                              expression: "configs.subtitle_web"
                             }
                           })
                         ],
@@ -40103,18 +40162,11 @@ var render = function() {
                           _c("v-text-field", {
                             attrs: { label: "Titulo Paralax" },
                             model: {
-                              value: (_vm.configs.title_parallax =
-                                _vm.$store.state.title_parallax),
+                              value: _vm.configs.title_parallax,
                               callback: function($$v) {
-                                _vm.$set(
-                                  (_vm.configs.title_parallax =
-                                    _vm.$store.state),
-                                  "title_parallax",
-                                  $$v
-                                )
+                                _vm.$set(_vm.configs, "title_parallax", $$v)
                               },
-                              expression:
-                                "configs.title_parallax=$store.state.title_parallax"
+                              expression: "configs.title_parallax"
                             }
                           })
                         ],
@@ -40128,18 +40180,11 @@ var render = function() {
                           _c("v-text-field", {
                             attrs: { label: "Subtitulo Paralax" },
                             model: {
-                              value: (_vm.configs.subtitle_parallax =
-                                _vm.$store.state.subtitle_parallax),
+                              value: _vm.configs.subtitle_parallax,
                               callback: function($$v) {
-                                _vm.$set(
-                                  (_vm.configs.subtitle_parallax =
-                                    _vm.$store.state),
-                                  "subtitle_parallax",
-                                  $$v
-                                )
+                                _vm.$set(_vm.configs, "subtitle_parallax", $$v)
                               },
-                              expression:
-                                "configs.subtitle_parallax=$store.state.subtitle_parallax"
+                              expression: "configs.subtitle_parallax"
                             }
                           })
                         ],
@@ -40153,18 +40198,11 @@ var render = function() {
                           _c("v-text-field", {
                             attrs: { label: "Descripcion Paralax" },
                             model: {
-                              value: (_vm.configs.text_parallax =
-                                _vm.$store.state.text_parallax),
+                              value: _vm.configs.text_parallax,
                               callback: function($$v) {
-                                _vm.$set(
-                                  (_vm.configs.text_parallax =
-                                    _vm.$store.state),
-                                  "text_parallax",
-                                  $$v
-                                )
+                                _vm.$set(_vm.configs, "text_parallax", $$v)
                               },
-                              expression:
-                                "configs.text_parallax=$store.state.text_parallax"
+                              expression: "configs.text_parallax"
                             }
                           })
                         ],
@@ -40178,22 +40216,122 @@ var render = function() {
                           _c("v-text-field", {
                             attrs: { label: "Texto del pie de Pagina" },
                             model: {
-                              value: (_vm.configs.text_footer =
-                                _vm.$store.state.text_footer),
+                              value: _vm.configs.text_footer,
                               callback: function($$v) {
-                                _vm.$set(
-                                  (_vm.configs.text_footer = _vm.$store.state),
-                                  "text_footer",
-                                  $$v
-                                )
+                                _vm.$set(_vm.configs, "text_footer", $$v)
                               },
-                              expression:
-                                "configs.text_footer=$store.state.text_footer"
+                              expression: "configs.text_footer"
                             }
                           })
                         ],
                         1
                       )
+                    ],
+                    1
+                  )
+                ],
+                1
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "v-card-actions",
+            { staticClass: "float-right" },
+            [
+              _c(
+                "v-btn",
+                {
+                  attrs: { dark: "" },
+                  on: {
+                    click: function($event) {
+                      $event.preventDefault()
+                      return _vm.update($event)
+                    }
+                  }
+                },
+                [_vm._v("\n\t\t\t\t\tActualizar\n\t\t\t\t")]
+              )
+            ],
+            1
+          )
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "v-card",
+        [
+          _c(
+            "v-card-text",
+            [
+              _c(
+                "v-container",
+                { staticClass: "px-3", attrs: { fluid: "" } },
+                [
+                  _c(
+                    "v-layout",
+                    { attrs: { row: "", wrap: "" } },
+                    [
+                      _c("v-flex", { attrs: { xs12: "" } }, [
+                        _vm._v(
+                          "\n\t                    redes sociales\n\t                  "
+                        )
+                      ])
+                    ],
+                    1
+                  )
+                ],
+                1
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "v-card-actions",
+            { staticClass: "float-right" },
+            [
+              _c(
+                "v-btn",
+                {
+                  attrs: { dark: "" },
+                  on: {
+                    click: function($event) {
+                      $event.preventDefault()
+                      return _vm.update($event)
+                    }
+                  }
+                },
+                [_vm._v("\n\t\t\t\t\tActualizar\n\t\t\t\t")]
+              )
+            ],
+            1
+          )
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "v-card",
+        [
+          _c(
+            "v-card-text",
+            [
+              _c(
+                "v-container",
+                { staticClass: "px-3", attrs: { fluid: "" } },
+                [
+                  _c(
+                    "v-layout",
+                    { attrs: { row: "", wrap: "" } },
+                    [
+                      _c("v-flex", { attrs: { xs12: "" } }, [
+                        _vm._v(
+                          "\n\t                    Imagen principal\n\t                  "
+                        )
+                      ])
                     ],
                     1
                   )
@@ -41205,18 +41343,7 @@ var render = function() {
   return _c(
     "v-row",
     { attrs: { cols: "12" } },
-    [
-      _c(
-        "v-col",
-        {
-          staticClass: "text-center",
-          attrs: { md: "12", xs: "12", sm: "12", lg: "12", dark: "" }
-        },
-        [_c("span", [_vm._v("CONFIGURACION")])]
-      ),
-      _vm._v(" "),
-      _c("configs")
-    ],
+    [_c("configs", { attrs: { title: "CONFIGURACION" } })],
     1
   )
 }
@@ -98884,14 +99011,15 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /*!***********************************************!*\
   !*** ./resources/components/admin/Config.vue ***!
   \***********************************************/
-/*! exports provided: default */
+/*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Config_vue_vue_type_template_id_5788cb1a___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Config.vue?vue&type=template&id=5788cb1a& */ "./resources/components/admin/Config.vue?vue&type=template&id=5788cb1a&");
 /* harmony import */ var _Config_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Config.vue?vue&type=script&lang=js& */ "./resources/components/admin/Config.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _Config_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _Config_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
 
@@ -98921,7 +99049,7 @@ component.options.__file = "resources/components/admin/Config.vue"
 /*!************************************************************************!*\
   !*** ./resources/components/admin/Config.vue?vue&type=script&lang=js& ***!
   \************************************************************************/
-/*! exports provided: default */
+/*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

@@ -1,9 +1,6 @@
 <template>
 	<v-row cols="12">
-		<v-col md="12" xs="12" sm="12" lg="12" dark class="text-center">
-			<span>CONFIGURACION</span>
-		</v-col>
-		<configs></configs>
+		<configs title="CONFIGURACION"></configs>
 	</v-row>
 </template>
 

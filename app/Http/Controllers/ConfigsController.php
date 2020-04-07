@@ -21,17 +21,16 @@ class ConfigsController extends Controller
     public function update(Request $request)
     {
         $this->validate($request, [
-            'title_web'         =>  'required|string',
-            'subtitle_web'      =>  'required|string',
-            'title_parallax'    =>  'required|string',
-            'subtitle_parallax' =>  'required|string',
-            'text_parallax'     =>  'required|string',
-            'text_footer'       =>  'required|string'
+            'title_web'         =>  'nullable|string',
+            'subtitle_web'      =>  'nullable|string',
+            'title_parallax'    =>  'nullable|string',
+            'subtitle_parallax' =>  'nullable|string',
+            'text_parallax'     =>  'nullable|string',
+            'text_footer'       =>  'nullable|string'
         ]);
 
         $config = Config::first();
-        $config->update($request->except(['networks','img_parallax']));
-        $config->save();
+        $config->fill($request->all())->save();
     	$config = Config::first()->load('networks');
 
         return $config;
