@@ -21,6 +21,15 @@ export default {
 		},
 		authError(state){
 			return state.authError;
+		},
+		isAdmin(state){
+			if (state.currenUser!==null) {
+				if (state.currenUser.rol === 'admin') {
+					return true
+				}
+				return false
+			}
+			return false
 		}
 	},
 	mutations: {
@@ -36,6 +45,10 @@ export default {
 				token:payload.access_token
 			});
 			localStorage.setItem('user',JSON.stringify(state.currenUser));
+			
+			if (payload.access_token!==null) {
+				axios.defaults.headers.common['Authorization'] = `Bearer ${payload.access_token}`;
+			}
 		},
 		loginFailed(state, payload){
 			state.loading 	= false;
@@ -45,6 +58,9 @@ export default {
 			localStorage.removeItem('user');
 			state.isLoggedIn = false;
 			state.currenUser = null;
+
+			axios.defaults.headers.common['Authorization'] = '';
+			delete axios.defaults.headers.common['Authorization'];
 		}
 	},
 	actions: {

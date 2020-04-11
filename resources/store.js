@@ -58,7 +58,7 @@ export default {
 		    }
 	  	},
 
-	  	async setUpdate({ commit }, payload) {
+	  	async setUpdate({ commit, rootState }, payload) {
 	  		try 
 	  		{
 		      const conf = (await axios.post('api/configs/update', payload)).data
@@ -68,7 +68,7 @@ export default {
 		    {
 		    	let data = Object.values(e.response.data)
 				data.forEach(element => {
-					console.log(element.toString())
+		      		console.log(element.toString());
 				});
 		    }
 	  	}

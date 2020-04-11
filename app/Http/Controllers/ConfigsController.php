@@ -8,7 +8,7 @@ use App\User;
 class ConfigsController extends Controller
 {
 	public function __construct(){
-		// $this->middleware('auth:api', ['except' => ['index'] ]);
+		$this->middleware('auth:api', ['except' => ['index'] ]);
 	}
 
     public function index()
@@ -21,12 +21,12 @@ class ConfigsController extends Controller
     public function update(Request $request)
     {
         $this->validate($request, [
-            'title_web'         =>  'nullable|string',
+            'title_web'         =>  'required|string',
             'subtitle_web'      =>  'nullable|string',
-            'title_parallax'    =>  'nullable|string',
+            'title_parallax'    =>  'required|string',
             'subtitle_parallax' =>  'nullable|string',
             'text_parallax'     =>  'nullable|string',
-            'text_footer'       =>  'nullable|string'
+            'text_footer'       =>  'required|string'
         ]);
 
         $config = Config::first();

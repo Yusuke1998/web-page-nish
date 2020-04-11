@@ -33,7 +33,7 @@ export const routes = [
     component: Demo
   },
   {
-    path: '/admin',
+    path: '/acceder',
     name: 'login',
     component: Login
   },

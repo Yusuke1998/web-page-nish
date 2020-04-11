@@ -28,7 +28,7 @@
         {{ item.name }}
       </v-btn>
       <v-btn 
-        v-if="isLoggedIn"
+        v-if="isLoggedIn && isAdmin"
         link :to="{ name: 'admin' }"
         right
         class="blue--text text--darken-4 accented-text">
@@ -47,18 +47,14 @@
 
 <script>
 
-import { mapState, mapActions, mapMutations } from 'vuex'
+import { mapState, mapGetters, mapActions, mapMutations } from 'vuex'
 
 export default {
   name: 'top-nav',
-  data(){
-    return {
-
-    }
-  },
   computed:{
-    ...mapState({
-      isLoggedIn: ({ auth: { isLoggedIn } }) => isLoggedIn
+    ...mapGetters({
+      isLoggedIn: 'isLoggedIn',
+      isAdmin: 'isAdmin',
     })
   },
   props: {
@@ -76,12 +72,13 @@ export default {
     }
   },
   methods: {
-    ...mapActions({
-      logout: 'logout'
-    }),
+    ...mapActions({ logout: 'logout' }),
     setLogout(){
       this.logout()
-      this.$router.push({ path: '/' })
+      if (this.$route.name !== 'home')
+      {
+        this.$router.push({ name: 'home' })
+      }
     }
   }
 }

@@ -2,6 +2,7 @@ import App from './App.vue';
 import '../node_modules/vuetify/dist/vuetify.min.css';
 import '@mdi/font/css/materialdesignicons.css'
 import Vuetify from 'vuetify'
+import Alertify from 'vue-alertify'
 import swal from 'sweetalert';
 import VueRouter from 'vue-router';
 import axios from 'axios';
@@ -30,8 +31,16 @@ Vue.use(Vuetify,
     }
 })
 
-Vue.use(eventBus);
-Vue.use(Vuex);
+Vue.use(Alertify, {
+  notifier: {
+    delay: 5,
+    position: 'top-right',
+    closeButton: true,
+  }
+})
+
+Vue.use(eventBus)
+Vue.use(Vuex)
 Vue.use(VueRouter)
 
 const store = new Vuex.Store(Store)
@@ -43,20 +52,39 @@ const router = new VueRouter({
 router.beforeEach((to, from, next) => {
   const auth = to.matched.some(record => record.meta.requiresAuth);
   const logued = store.state.auth.isLoggedIn
+  const rol = logued ? store.state.auth.currenUser.rol : ''
 
   if (auth && !logued)
   {
-    next('/admin');
+    next('/acceder');
   }
-  else if(to.path == '/admin' && logued) 
+  else if(to.path == '/acceder' && logued && rol !== 'admin') 
   {
-    next('/administrar')
+    next('/')
+  }
+  else if(to.path == '/acceder' && logued && rol === 'admin') 
+  {
+    next('/configurar')
+  }
+  else if(to.path == '/configurar' && logued && rol !== 'admin') 
+  {
+    next('/')
   }
   else
   {
     next()
   }
 })
+
+if (Store.state.auth.currenUser!==null) {
+  let token = Store.state.auth.currenUser.token
+  if (token){ 
+    axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+  }
+}else{
+  axios.defaults.headers.common['Authorization'] = '';
+  delete axios.defaults.headers.common['Authorization'];
+}
 
 new Vue({
     vuetify : new Vuetify,
@@ -71,7 +99,7 @@ new Vue({
                 text: "Ok!",
                 closeModal: false,
             },
-            icon:'/imgDefault/spin.gif',
+            icon:'assets/spin.gif',
             closeOnClickOutside: false,
             timer: time
         })
