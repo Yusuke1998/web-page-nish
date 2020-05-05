@@ -14,7 +14,7 @@ class ConfigsController extends Controller
     public function index()
     {
     	$configs = Config::first()
-                    ->load('networks');
+            ->load('networks');
         return $configs;
     }
 
@@ -32,7 +32,7 @@ class ConfigsController extends Controller
         if ($request->hasFile('img_parallax')) {
             $file = $request->file('img_parallax');
             $path = "assets/parallax/";
-            $img = $file->getClientOriginalName();
+            $img = 'changed-img-parallax.'.$file->getClientOriginalExtension();
             $file->move($path, $img);
             $pathImg = $path.$img;
         }

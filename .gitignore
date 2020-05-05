@@ -1,5 +1,4 @@
-/public/imgModif/*
-/public/imgOrigi/*
+/public/assets/parallax/*
 /node_modules
 /vendor
 /.idea

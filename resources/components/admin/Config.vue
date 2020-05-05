@@ -203,8 +203,9 @@ export default {
       setUpdate: 'setUpdate',
       getConfigs: 'getConfigs'
     }),
-    update(){
-    	this.setUpdate(this.configs)
+    async update(){
+    	await this.setUpdate(this.configs)
+      utils.reload()
     },
     setData(){
     	this.configs={
