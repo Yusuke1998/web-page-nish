@@ -16,7 +16,7 @@ class CreateConfigsTable extends Migration
                         ->nullable()
                         ->default('subtitle_web');
             $table->string('img_parallax')
-                        ->default('img_parallax.jpg');
+                        ->default('assets/img_parallax.jpg');
             $table->string('title_parallax')
                         ->default('title_parallax');
             $table->string('subtitle_parallax')

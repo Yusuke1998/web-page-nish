@@ -28,6 +28,13 @@
         {{ item.name }}
       </v-btn>
       <v-btn 
+        v-if="!isLoggedIn"
+        link :to="{ name: 'login' }"
+        right
+        class="blue--text text--darken-4 accented-text">
+        Acceder/Registrar
+      </v-btn>
+      <v-btn 
         v-if="isLoggedIn && isAdmin"
         link :to="{ name: 'admin' }"
         right
@@ -47,7 +54,7 @@
 
 <script>
 
-import { mapState, mapGetters, mapActions, mapMutations } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 
 export default {
   name: 'top-nav',

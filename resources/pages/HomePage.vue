@@ -16,27 +16,28 @@ import Demo from '../components/home/Demo'
 import Consulting from '../components/home/Consulting'
 import Products from '../components/home/Products'
 import Services from '../components/home/Services'
+import { mapMutations } from 'vuex'
 
 export default {
 	name:'home',
-
-	mounted()
-	{
-
+	mounted() {
+		this.setParallax(true)
 	},
-
-	data()
-	{
+	data() {
 		return {
-
 		}
 	},
+	methods: {
+	...mapMutations({
+	    setParallax: 'setParallax' 
+	  })
+	},
 	components: {
-	    'v-services': Services,
-	    'v-products': Products,
-	    'v-demo': Demo,
-	    'v-consulting': Consulting
-	  }
+    'v-services': Services,
+    'v-products': Products,
+    'v-demo': Demo,
+    'v-consulting': Consulting
+  }
 }
 
 </script>

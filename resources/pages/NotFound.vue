@@ -16,25 +16,23 @@
 </template>
 
 <script>
+import { mapMutations } from 'vuex'
 
 export default {
 	name:'notFound',
-
 	mounted()
 	{
-
+		this.setParallax(false)
 	},
-
 	data()
 	{
-
 		return {
-
 		}
-	},
-
+	}
 	methods:{
-
+	...mapMutations({
+	    setParallax: 'setParallax' 
+	  })
 	}
 }
 

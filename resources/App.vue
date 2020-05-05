@@ -1,20 +1,20 @@
 <template>
   <v-app>
     <top-nav 
-        :title="getConfigsData.title_web" 
-        :subtitle="getConfigsData.subtitle_web" 
+        :title="c.title_web" 
+        :subtitle="c.subtitle_web" 
         :menu="menu"
     />
     <v-content>
       <hero 
-        :img="getConfigsData.img_parallax"
-        :titleLg="getConfigsData.title_parallax"
-        :titleMd="getConfigsData.text_parallax" 
-        :titleXs="getConfigsData.subtitle_parallax" 
+        :img="c.img_parallax"
+        :titleLg="c.title_parallax"
+        :titleMd="c.text_parallax" 
+        :titleXs="c.subtitle_parallax" 
       />
       <mobile-menu 
-        :title="getConfigsData.title_web" 
-        :subtitle="getConfigsData.subtitle_web" 
+        :title="c.title_web" 
+        :subtitle="c.subtitle_web" 
         :menu="menu" 
         class="hidden-sm-and-up"
       />
@@ -25,7 +25,7 @@
           </transition>
         </v-container>
       </v-content>
-      <ic-footer :list="getConfigsData.networks" :text="getConfigsData.text_footer"/>
+      <ic-footer :list="c.networks" :text="c.text_footer"/>
     </v-content>
   </v-app>
 </template>
@@ -40,18 +40,22 @@ import Footer from './components/layout/Footer'
 
 export default {
   name: 'App',
-  created(){
-    this.getConfigs()
+  async created(){
+    await this.getConfigs()
   },
   computed:{
     ...mapState({
       isLoggedIn: ({ auth: { isLoggedIn } }) => isLoggedIn,
-      getConfigsData: (getConfigsData) => getConfigsData
+      c: (getConfigsData) => getConfigsData
     })
   },
   data () {
     return {
       menu: [
+        {
+          name: 'Inicio',
+          href: '/'
+        },
         {
           name: 'Servicios',
           href: 'servicios'

@@ -22,18 +22,31 @@ class ConfigsController extends Controller
     {
         $this->validate($request, [
             'title_web'         =>  'required|string',
-            'subtitle_web'      =>  'nullable|string',
             'title_parallax'    =>  'required|string',
-            'subtitle_parallax' =>  'nullable|string',
-            'text_parallax'     =>  'nullable|string',
-            'text_footer'       =>  'required|string'
+            'text_footer'       =>  'required|string',
+            'subtitle_web'      =>  'string',
+            'subtitle_parallax' =>  'string',
+            'text_parallax'     =>  'string'
         ]);
-
+        $pathimg = '';
+        if ($request->hasFile('img_parallax')) {
+            $file = $request->file('img_parallax');
+            $path = "assets/parallax/";
+            $img = $file->getClientOriginalName();
+            $file->move($path, $img);
+            $pathImg = $path.$img;
+        }
         $config = Config::first();
-        $config->fill($request->all())->save();
-    	$config = Config::first()->load('networks');
-
-        return $config;
+        $config->update([
+            'title_web'         =>  $request->title_web,
+            'title_parallax'    =>  $request->title_parallax,
+            'text_footer'       =>  $request->text_footer,
+            'subtitle_web'      =>  $request->subtitle_web,
+            'subtitle_parallax' =>  $request->subtitle_parallax,
+            'text_parallax'     =>  $request->text_parallax,
+            'img_parallax'      =>  $pathImg
+        ]);
+        return Config::first()->load('networks');
     }
 
     public function update_img(Request $request)

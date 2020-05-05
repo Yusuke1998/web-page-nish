@@ -1,5 +1,5 @@
 <template>
-  <v-parallax :src="`assets/${img==''||null||undefined?'img_parallax.jpg':img}`">
+  <v-parallax v-if="show && img" :src="`${img||'assets/img_parallax.jpg'}`">
     <v-layout
       column
       align-center
@@ -25,8 +25,10 @@
     </v-layout>
   </v-parallax>
 </template>
-
 <script>
+
+import { mapState } from 'vuex'
+
 export default {
   props:{
     img:{
@@ -46,7 +48,12 @@ export default {
       required:true
     }
   },
-  name:'hero'
+  name:'hero',
+  computed:{
+    ...mapState({
+      show: ({showParallax}) => showParallax
+    })
+  }
 }
 </script>
 

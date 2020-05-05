@@ -1,4 +1,3 @@
-
 export function login(credentials) {
 	return new Promise((res,rej) => {
 		axios.post('api/login/',credentials)

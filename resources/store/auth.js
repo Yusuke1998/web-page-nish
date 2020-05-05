@@ -10,19 +10,19 @@ export default {
 		authError:null
 	},
 	getters: {
-		isLoading(state){
+		isLoading(state) {
 			return state.isLoading;
 		},
-		isLoggedIn(state){
+		isLoggedIn(state) {
 			return state.isLoggedIn;
 		},
-		currenUser(state){
+		currenUser(state) {
 			return state.currenUser;
 		},
-		authError(state){
+		authError(state) {
 			return state.authError;
 		},
-		isAdmin(state){
+		isAdmin(state) {
 			if (state.currenUser!==null) {
 				if (state.currenUser.rol === 'admin') {
 					return true
@@ -33,11 +33,11 @@ export default {
 		}
 	},
 	mutations: {
-		login(state){
+		login(state) {
 			state.loading 	= true;
 			state.authError = null;
 		},
-		loginSuccess(state, payload){
+		loginSuccess(state, payload) {
 			state.authError 	= null;
 			state.isLoggedIn 	= true;
 			state.isLoading 	= false;
@@ -50,25 +50,42 @@ export default {
 				axios.defaults.headers.common['Authorization'] = `Bearer ${payload.access_token}`;
 			}
 		},
-		loginFailed(state, payload){
+		loginFailed(state, payload) {
 			state.loading 	= false;
 			state.authError = payload.error;
+			state.isLoggedIn = false;
 		},
-		logout(state){
+		logout(state) {
 			localStorage.removeItem('user');
 			state.isLoggedIn = false;
 			state.currenUser = null;
 
 			axios.defaults.headers.common['Authorization'] = '';
 			delete axios.defaults.headers.common['Authorization'];
+		},
+		register(state, payload) {
+			console.log('mutations', payload)
 		}
 	},
 	actions: {
-		login(context){
+		login(context) {
 			context.commit('login')
 		},
-		logout(context){
+		logout(context) {
 			context.commit('logout')
+		},
+		async register({ commit, rootState }, payload) {
+			try {
+	      const res = (await axios.post('api/register', payload)).data
+				commit('login')
+				commit('loginSuccess', res)
+			} catch (e) {
+				commit('loginFailed',e)
+			    let data = Object.values(e.response.data)
+				data.forEach(element => {
+			      console.log(element.toString());
+				});
+	    	}
 		}
 	}
 }
