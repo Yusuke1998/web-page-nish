@@ -15,8 +15,4 @@ class Config extends Model {
     public function networks(){
         return $this->hasMany(Network::class);
     }
-
-    public function user(){
-        return $this->belongsTo(User::class);
-    }
 }

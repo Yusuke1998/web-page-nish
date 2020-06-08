@@ -1,10 +1,10 @@
 import Home from './pages/HomePage'
-import Products from './pages/ProductsPage'
 import Services from './pages/ServicesPage'
-import Consulting from './pages/ConsultingPage'
+import Query from './pages/QueryPage'
 import Demo from './pages/DemoPage'
 import Login from './pages/LoginPage'
 import Admin from './pages/AdminPage'
+import Landing from './pages/LandingConfigPage'
 
 export const routes = [
   {
@@ -13,23 +13,18 @@ export const routes = [
     component: Home
   },
   {
-    path: '/productos',
-    name: 'products',
-    component: Products
-  },
-  {
     path: '/servicios',
     name: 'services',
     component: Services
   },
   {
     path: '/consultas',
-    name: 'consulting',
-    component: Consulting
+    name: 'query',
+    component: Query
   },
   {
-    path: '/demostraciones',
-    name: 'demo',
+    path: '/blog',
+    name: 'blog',
     component: Demo
   },
   {
@@ -41,6 +36,14 @@ export const routes = [
     path: '/configurar',
     name: 'admin',
     component: Admin,
+    meta:{
+      requiresAuth: true
+    }
+  },
+  {
+    path: '/configurar-inicio',
+    name: 'landing',
+    component: Landing,
     meta:{
       requiresAuth: true
     }

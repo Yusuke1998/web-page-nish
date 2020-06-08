@@ -13,7 +13,7 @@ export default {
 	name:'admin',
 	mounted()
 	{
-		this.setParallax(true)
+		this.setParallax(false)
 	},
 	data()
 	{

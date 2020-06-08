@@ -1,17 +1,191 @@
 <template>
-  <v-container text-xs-center mt-2>
-    <v-layout>
-      <v-flex>
-        <h3 class="display-1 product-title mt-1">ISLAND Civil Earthworks System</h3>
-        <p class="mt-3">ISLAND Civil's Earthworks platform makes it easy to maintain a database of all your subsurface data.</p>
-      </v-flex>
-    </v-layout>
-    <v-divider/>
-  </v-container>
+	<v-container v-resize="getWindowSize" class="px-5 my-5">
+		<v-row>
+			<v-col cols="12" class="d-flex justify-space-between align-center">
+				<v-btn @click="showCreate=!showCreate" color="primary">
+					<v-icon left>add</v-icon>
+					Nuevo
+				</v-btn>
+				<span />
+				<v-btn-toggle
+					v-model="viewStyle"
+					mandatory
+					color="primary"
+					dense
+					group
+				>
+					<v-tooltip color="black" bottom>
+						<template v-slot:activator="{ on }">
+							<v-btn v-on="on" class="ma-0" value="module">
+								<v-icon>view_module</v-icon>
+							</v-btn>
+						</template>
+						<span class="caption">Vista de cuadricula</span>
+					</v-tooltip>
+					<v-tooltip color="black" bottom>
+						<template v-slot:activator="{ on }">
+							<v-btn v-on="on" class="ma-0" value="list">
+								<v-icon>view_stream</v-icon>
+							</v-btn>
+						</template>
+						<span class="caption">Vista de lista</span>
+					</v-tooltip>
+				</v-btn-toggle>
+			</v-col>
+		</v-row>
+		<v-row>
+			<v-col
+				v-for="item in paginateData"
+				:key="item.id"
+				:sm="viewStyle === 'module' ? 6 : 12"
+				:md="viewStyle === 'module' ? 4 : 12"
+				cols="12"
+			>
+				<v-hover>
+					<v-card
+						slot-scope="{ hover }"
+						:raised="hover"
+						height="100%"
+						outlined
+					>
+						<v-card-title
+							@click="open(item.id)"
+							class="cursor-pointer"
+						>
+							<v-icon
+								:color="item.id !== 1 ? 1 ? 'error' : 'grey' : 'success' "
+								left
+								small
+							>
+								fiber_manual_record
+							</v-icon>
+							<div
+								:class="1 ? 'grey--text text--lighten-1' : ''"
+								class="subtitle-1 font-weight-medium text-truncate"
+							>
+								{{ item.title }}
+							</div>
+							<v-spacer />
+							<v-menu bottom left>
+								<template v-slot:activator="{ on }">
+									<v-btn v-on="on" @click.native.stop icon>
+										<v-icon :class="1 ? 'grey--text text--lighten-1' : ''">
+											more_vert
+										</v-icon>
+									</v-btn>
+								</template>
+								<v-list>
+									<v-list-item @click="">
+										<v-list-item-title>
+											Editar
+										</v-list-item-title>
+									</v-list-item>
+									<v-list-item @click="">
+										<v-list-item-title>
+											Eliminar
+										</v-list-item-title>
+									</v-list-item>
+								</v-list>
+							</v-menu>
+						</v-card-title>
+						<v-divider />
+						<v-card-text>
+							<v-row dense>
+								<template v-if="viewStyle === 'module'">
+									<v-col cols="12">
+										{{ item.content }}
+									</v-col>
+								</template>
+
+								<template v-else>
+									<v-col cols="6" md="12">
+										<div 
+											:class="1 ? 'grey--text text--lighten-1' : ''"
+											class="font-weight-medium"
+										>
+										{{ item.content }}
+									</div>
+									</v-col>
+								</template>
+							</v-row>
+						</v-card-text>
+					</v-card>
+				</v-hover>
+			</v-col>
+		</v-row>
+		<v-pagination
+	    v-if="paginateData.length > 0 && pageCount > 1"
+	    v-model="page"
+	    :length="pageCount"
+	    :total-visible="7"
+	  />
+
+	  <Create
+      :dialog="showCreate"
+      @close="showCreate = false"
+    />
+
+    <Edit
+      :dialog="showEdit"
+      @close="showEdit = false"
+    />
+	</v-container>
 </template>
 
 <script>
+import { mapState, mapActions, mapMutations } from 'vuex'
+import Create from '../home/services/create'
+import Edit from '../home/services/edit'
+
 export default {
+	data(){
+		return {
+			showCreate: false,
+			showEdit: false,
+			services: [],
+			windowSize: { x: 0, y: 0 },
+			viewStyle: 'list',
+			page: 1,
+	    perPage: 6,
+	    pages: 1,
+		}
+	},
+	created(){
+		this.getWindowSize()
+		this.setAllServices()
+	},
+	methods:{
+    ...mapActions({
+      getServices: 'getServices'
+    }),
+    async setAllServices() {
+			await this.getServices()
+			this.services = this.ServicesData
+    },
+		getWindowSize() {
+      this.windowSize.x = window.innerWidth
+      this.windowSize.y = window.innerHeight
+    }
+	},
+	computed:{
+		...mapState({
+      ServicesData: ({ service: { ServicesData } }) => ServicesData
+    }),
+		paginateData() {
+      	const { page, perPage, services } = this
+      	const start = (page - 1) * perPage
+      	const end = start + perPage
+      return services.slice(start, end)
+    },
+    pageCount() {
+      const total = this.services.length
+      return Math.ceil(total / this.perPage)
+      return total
+    }
+	},
+	components:{
+		Create, Edit
+	}
 }
 </script>
 

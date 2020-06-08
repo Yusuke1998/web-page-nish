@@ -53,24 +53,16 @@ export default {
     return {
       menu: [
         {
-          name: 'Inicio',
+          name: 'inicio',
           href: '/'
         },
         {
-          name: 'Servicios',
+          name: 'servicios',
           href: 'servicios'
         },
         {
-          name: 'Consultas',
-          href: 'consultas'
-        },
-        {
-          name: 'Productos',
-          href: 'productos'
-        },
-        {
-          name: 'Demostraciones',
-          href: 'demostraciones'
+          name: 'blog',
+          href: 'blog'
         }
       ]
     }

@@ -1,43 +1,42 @@
 <template>
-	<v-content>
-		<!-- Servicios ofrecidos -->
-		<v-services/>
-		<!-- Productos ofrecidos -->
-		<v-products/>
-		<!-- Demostraciones -->
-		<v-demo/>
-		<!-- Consultas -->
-		<v-consulting/>
-	</v-content>
+	<v-landing :landing-data="landing"/>
 </template>
 
 <script>
-import Demo from '../components/home/Demo'
-import Consulting from '../components/home/Consulting'
-import Products from '../components/home/Products'
-import Services from '../components/home/Services'
-import { mapMutations } from 'vuex'
+import Landing from '../components/home/Landing'
+import { mapState, mapActions, mapMutations } from 'vuex'
 
 export default {
 	name:'home',
 	mounted() {
 		this.setParallax(true)
+		this.getData()
 	},
 	data() {
 		return {
+			landing: []
 		}
 	},
 	methods: {
-	...mapMutations({
-	    setParallax: 'setParallax' 
-	  })
+		...mapActions({
+				getLanding: 'getLanding'
+			}),
+		...mapMutations({
+			setParallax: 'setParallax' 
+		}),
+		async getData() {
+			await this.getLanding({ row: 5, order: 'DESC' })
+			this.landing = this.landingData
+		}
 	},
-	components: {
-    'v-services': Services,
-    'v-products': Products,
-    'v-demo': Demo,
-    'v-consulting': Consulting
-  }
+	computed:{
+		...mapState({
+			landingData: ({ landing: { landingData } }) => landingData
+		})
+	},
+	components: { 
+		'v-landing': Landing 
+	}
 }
 
 </script>

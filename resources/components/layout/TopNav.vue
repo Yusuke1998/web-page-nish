@@ -5,11 +5,6 @@
       class="hidden-sm-and-up brand-spacer"/>
     <v-toolbar-title 
       class="text-xs-center brand-logo">
-      <v-icon 
-        link :to="{ path: '/' }"
-        x-large class="primary--text hidden-sm-and-down brand-icon">
-        mdi-plus
-      </v-icon> 
       {{title}}
       <span 
         link :to="{ path: '/' }"
@@ -26,6 +21,12 @@
         link :to="{ path: item.href }"
         class="blue--text text--darken-2 accented-text">
         {{ item.name }}
+      </v-btn>
+      <v-btn 
+        v-if="isLoggedIn"
+        link :to="{ path: 'consultas' }"
+        class="blue--text text--darken-2 accented-text">
+        consultas
       </v-btn>
       <v-btn 
         v-if="!isLoggedIn"

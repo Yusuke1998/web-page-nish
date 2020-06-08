@@ -11,6 +11,8 @@ import {routes} from './routes';
 import eventBus from './plugins/event-bus';
 import Vuex from 'vuex';
 import Store from './store'
+import VueTrumbowyg from 'vue-trumbowyg'
+import 'trumbowyg/dist/ui/trumbowyg.css'
 
 require('./bootstrap');
 window.Vue = require('vue');
@@ -42,6 +44,7 @@ Vue.use(Alertify, {
 Vue.use(eventBus)
 Vue.use(Vuex)
 Vue.use(VueRouter)
+Vue.use(VueTrumbowyg)
 
 const store = new Vuex.Store(Store)
 const router = new VueRouter({
@@ -67,6 +70,10 @@ router.beforeEach((to, from, next) => {
     next('/configurar')
   }
   else if(to.path == '/configurar' && logued && rol !== 'admin') 
+  {
+    next('/')
+  }
+  else if(to.path == '/configurar-inicio' && logued && rol !== 'admin') 
   {
     next('/')
   }

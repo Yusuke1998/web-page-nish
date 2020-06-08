@@ -1,6 +1,6 @@
 <template>
   <v-container grid-list-md text-xs-center>
-    <v-divider class="footer-divider"></v-divider>
+    <!--<v-divider class="footer-divider"></v-divider>-->
     <v-row>
       <v-col 
         :cols="calcSize(list)" 

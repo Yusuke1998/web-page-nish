@@ -13,6 +13,13 @@
             </v-btn>
             <v-btn 
               v-if="isLoggedIn"
+              link :to="{ path: 'consultas' }"
+              flat
+              class="blue--text text--darken-2 accented-text">
+              consultas
+            </v-btn>
+            <v-btn 
+              v-if="isLoggedIn"
               link :to="{ name: 'admin' }"
               right
               class="blue--text text--darken-4 accented-text">

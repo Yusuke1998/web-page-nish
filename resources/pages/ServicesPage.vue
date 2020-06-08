@@ -1,11 +1,10 @@
 <template>
-	<div>
-		ServicesPage
-	</div>
+	<v-services></v-services>
 </template>
 
 <script>
 import { mapMutations } from 'vuex'
+import Service from '../components/home/Services'
 
 export default {
 	name:'services',
@@ -22,6 +21,9 @@ export default {
 	...mapMutations({
 	    setParallax: 'setParallax' 
 	  })
+	},
+	components:{
+		'v-services': Service
 	}
 }
 

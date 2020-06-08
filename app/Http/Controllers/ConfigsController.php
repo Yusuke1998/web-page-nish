@@ -28,14 +28,6 @@ class ConfigsController extends Controller
             'subtitle_parallax' =>  'string',
             'text_parallax'     =>  'string'
         ]);
-        $pathimg = '';
-        if ($request->hasFile('img_parallax')) {
-            $file = $request->file('img_parallax');
-            $path = "assets/parallax/";
-            $img = 'changed-img-parallax.'.$file->getClientOriginalExtension();
-            $file->move($path, $img);
-            $pathImg = $path.$img;
-        }
         $config = Config::first();
         $config->update([
             'title_web'         =>  $request->title_web,
@@ -44,8 +36,17 @@ class ConfigsController extends Controller
             'subtitle_web'      =>  $request->subtitle_web,
             'subtitle_parallax' =>  $request->subtitle_parallax,
             'text_parallax'     =>  $request->text_parallax,
-            'img_parallax'      =>  $pathImg
         ]);
+        if ($request->hasFile('img_parallax')) {
+            $file = $request->file('img_parallax');
+            $path = "assets/parallax/";
+            $img = 'changed-img-parallax.'.$file->getClientOriginalExtension();
+            $file->move($path, $img);
+            $pathImg = $path.$img;
+            $config->update([
+                'img_parallax' =>   $pathImg
+            ]);
+        }
         return Config::first()->load('networks');
     }
 

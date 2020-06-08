@@ -20,6 +20,7 @@
     "browser-sync": "^2.26.7",
     "browser-sync-webpack-plugin": "^2.0.1",
     "cross-env": "^5.1",
+    "expose-loader": "^0.7.5",
     "jquery": "^3.2",
     "laravel-mix": "^4.0.7",
     "lodash": "^4.17.13",
@@ -35,11 +36,18 @@
   },
   "dependencies": {
     "@material-ui/icons": "^4.9.1",
+    "base64-stream": "^1.0.0",
+    "file-loader": "^6.0.0",
+    "material-design-icons-iconfont": "^5.0.1",
     "moment": "^2.24.0",
     "sweetalert": "^2.1.2",
     "toastr": "^2.1.4",
     "vue-alertify": "^1.1.0",
     "vue-i18n": "^8.15.3",
+    "vue-pop-colorpicker": "^1.0.2",
+    "vue-prism-component": "^1.2.0",
+    "vue-trumbowyg": "^3.6.0",
+    "vuedraggable": "^2.23.2",
     "vuetify": "^2.2.8",
     "vuex": "^3.1.3"
   }

@@ -1,6 +1,6 @@
 <template>
 	<div>
-		DemoPage
+		BlogPage
 	</div>
 </template>
 
