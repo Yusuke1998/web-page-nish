@@ -1,5 +1,14 @@
 <template>
   <v-container mt-2>
+  	<!-- carrusel -->
+	<v-carousel class="mb-5">
+		<v-carousel-item>aaaaaaa</v-carousel-item>
+		<v-carousel-item>aaaaaaa</v-carousel-item>
+		<v-carousel-item>aaaaaaa</v-carousel-item>
+		<v-carousel-item>aaaaaaa</v-carousel-item>
+	</v-carousel>
+
+  	<!-- vaina loca :v -->
 	<div v-for="item in LandingData" :key="item.id" style="overflow-wrap: break-word;">
 		<!------------ custom ------------>
 		<v-layout v-if="item.type === 'custom' && jsonParse(item).type === 'onlyText'" row wrap>
@@ -89,6 +98,8 @@
 
 		<v-divider class="my-5"/>
 	</div>
+
+
   </v-container>
 </template>
 
@@ -98,6 +109,12 @@ export default {
 		LandingData: {
 			type: Array,
 			required: true
+		},
+		serviceData: {
+			type: Array
+		},
+		blogData: {
+			type: Array
 		}
 	},
 	methods:{

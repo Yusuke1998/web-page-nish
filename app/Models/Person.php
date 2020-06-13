@@ -6,7 +6,8 @@ use App\User;
 class Person extends Model {
 
     protected $fillable = [
-    	'firstname','lastname','identity'
+    	'firstname','lastname','identity', 'genere', 'city',
+    	'state', 'municipality', 'country', 'photo', 'address', 'phone'
     ];
 
     public function user(){

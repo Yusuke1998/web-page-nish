@@ -11,18 +11,23 @@ class CreateUsersTable extends Migration {
             $table->bigIncrements('id');
             $table->string('name');
             $table->string('email');
+            $table->string('password');
             $table->timestamp('email_verified_at')
                 ->nullable();
-            $table->string('password');
+            $table->rememberToken();
+            $table->timestamps();
+                
+            $table->enum('status', ['active', 'inactive'])
+                ->default('active');
             $table->enum('rol', ['admin', 'user'])
                 ->default('user');
+            $table->string('photo')
+                ->nullable();
             $table->integer('person_id')
                 ->unsigned()
                 ->references('id')
                 ->on('people')
                 ->onDelete('cascade');
-            $table->rememberToken();
-            $table->timestamps();
         });
     }
 

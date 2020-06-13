@@ -1,6 +1,7 @@
 import auth from './store/auth'
 import landing from './store/landing-config'
 import service from './store/services'
+import query from './store/query'
 
 export default {
 	state: {
@@ -79,6 +80,7 @@ export default {
 	modules: {
 		auth,
 		landing,
-		service
+		service,
+		query
 	}
 }

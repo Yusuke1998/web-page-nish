@@ -5,6 +5,7 @@ use Illuminate\Database\Eloquent\Model;
 class Query extends Model {
 
     protected $fillable = [
-    	'state', 'content', 'img', 'user_id'
+    	'name','email','phone1','phone2','address',
+    	'state', 'content', 'images', 'user_id'
     ];
 }

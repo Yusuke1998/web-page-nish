@@ -15,6 +15,7 @@ $router->group(['prefix' => 'api'], function ($router){
 
     // Usuarios
     $router->get('users', 'UserController@index');
+    $router->get('user/profile/{id}', 'UserController@show');
 
     // Configuraciones
     $router->get('configs', 'ConfigsController@index');
@@ -28,14 +29,17 @@ $router->group(['prefix' => 'api'], function ($router){
 
     // Servicios
     $router->get('services', 'ServiceController@index');
+    $router->get('services/{id}', 'ServiceController@show');
     $router->post('services', 'ServiceController@store');
     $router->put('services/{id}', 'ServiceController@update');
-    $router->delete('services/{id}', 'ServiceController@index');
+    $router->delete('services/{id}', 'ServiceController@destroy');
 
     // Consultas
-    $router->get('querys', 'QueryController@index');
-    $router->post('querys', 'QueryController@store');
-    $router->put('querys/{id}', 'QueryController@update');
-    $router->delete('querys/{id}', 'QueryController@index');
+    $router->get('queries', 'QueryController@index');
+    $router->get('queries/{id}', 'QueryController@show');
+    $router->post('queries', 'QueryController@store');
+    $router->put('queries/{id}', 'QueryController@update');
+    $router->put('queries/{id}/state', 'QueryController@update_state');
+    $router->delete('queries/{id}', 'QueryController@destroy');
 
 });

@@ -4,10 +4,13 @@ const user = getLocalUser();
 
 export default {
 	state: {
-		currenUser:user,
-		isLoggedIn:!!user,
-		isLoading:false,
-		authError:null
+		currentUser: user,
+		isLoggedIn: !!user,
+		isLoading: false,
+		authError: null,
+		editProfile: false,
+		editDraw: false,
+		profile: {}
 	},
 	getters: {
 		isLoading(state) {
@@ -16,15 +19,15 @@ export default {
 		isLoggedIn(state) {
 			return state.isLoggedIn;
 		},
-		currenUser(state) {
-			return state.currenUser;
+		currentUser(state) {
+			return state.currentUser;
 		},
 		authError(state) {
 			return state.authError;
 		},
 		isAdmin(state) {
-			if (state.currenUser!==null) {
-				if (state.currenUser.rol === 'admin') {
+			if (state.currentUser!==null) {
+				if (state.currentUser.rol === 'admin') {
 					return true
 				}
 				return false
@@ -41,10 +44,10 @@ export default {
 			state.authError 	= null;
 			state.isLoggedIn 	= true;
 			state.isLoading 	= false;
-			state.currenUser 	= Object.assign({},payload.user, {
+			state.currentUser 	= Object.assign({},payload.user, {
 				token:payload.access_token
 			});
-			localStorage.setItem('user',JSON.stringify(state.currenUser));
+			localStorage.setItem('user',JSON.stringify(state.currentUser));
 			
 			if (payload.access_token!==null) {
 				axios.defaults.headers.common['Authorization'] = `Bearer ${payload.access_token}`;
@@ -58,13 +61,19 @@ export default {
 		logout(state) {
 			localStorage.removeItem('user');
 			state.isLoggedIn = false;
-			state.currenUser = null;
+			state.currentUser = null;
 
 			axios.defaults.headers.common['Authorization'] = '';
 			delete axios.defaults.headers.common['Authorization'];
 		},
-		register(state, payload) {
-			console.log('mutations', payload)
+		drawerEditProfile(state, payload) {
+			state.editProfile = payload
+		},
+		drawerEdit(state, payload) {
+			state.editDraw = payload
+		},
+		setProfile(state, payload) {
+			state.profile = payload
 		}
 	},
 	actions: {
@@ -73,6 +82,15 @@ export default {
 		},
 		logout(context) {
 			context.commit('logout')
+		},
+		async refresh({ commit, rootState, dispatch }) {
+			try {
+      			const res = (await axios.post('api/refresh', rootState.auth.currentUser)).data
+				commit('loginSuccess', res)
+			} catch (e) {
+				context.commit('logout')
+			    console.log(e)
+	    	}
 		},
 		async register({ commit, rootState }, payload) {
 			try {
@@ -86,6 +104,21 @@ export default {
 			      console.log(element.toString());
 				});
 	    	}
+		},
+		async getProfile({ commit, rootState }, payload) {
+			try {
+	      		const res = (await axios.get(`api/user/profile/${payload}`)).data
+				commit('setProfile', res)
+			} catch (e) {
+				commit('setProfile', {})
+			    console.log(e)
+	    	}
+		},
+		changeDrawerProfile({ commit, rootState }, payload) {
+			commit('drawerEditProfile', payload)
+		},
+		changeDrawer({ commit, rootState }, payload) {
+			commit('drawerEdit', payload)
 		}
 	}
 }

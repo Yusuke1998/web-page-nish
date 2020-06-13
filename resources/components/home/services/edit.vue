@@ -1,24 +1,34 @@
 <template>
-	<v-dialog v-model="dialog" max-width="350" persistent>
+	<v-dialog v-model="dialog" max-width="600" persistent>
 		<v-card>
-			<v-card-text class="pt-7 px-12 pb-0">
+			<v-card-title>
+				<b>Servicio</b>
+			</v-card-title>
+			<v-card-text>
 				<v-row>
-					<v-col
-						cols="12"
-						class="d-flex justify-center"
-					>
-						<span
-							class="primary--text subtitle-2 font-weight-medium"
-						>
-							<b>
-								Crear Servicio
-							</b>
-						</span>
-					</v-col>
-				</v-row>
-				<v-row>
-					
-				</v-row>
+          <v-col
+            cols="12"
+            class="mt-2"
+          >
+          	<v-text-field
+	            label="Titulo"
+				      v-model="service.title"
+				      :disabled="!isAdmin"
+				      outlined
+				    />
+        	</v-col>
+      		<v-col
+            cols="12"
+            class="mt-2"
+          >
+	      		<v-textarea
+	            label="Contenido"
+	            v-model="service.content"
+	            :disabled="!isAdmin"
+				      outlined
+	          />
+	        </v-col>
+    		</v-row>
 			</v-card-text>
 			<v-card-actions class="pa-4 pt-0">
 				<v-row>
@@ -27,10 +37,10 @@
 						class="d-flex justify-end"
 					>
 						<v-btn
+							v-if="isLoggedIn && isAdmin"
 							color="primary"
 							small
 							@click="update"
-							class="px-6"
 						>
 							Actualizar
 						</v-btn>
@@ -44,7 +54,6 @@
 							outlined
 							small
 							@click="$emit('close')"
-							class="px-9"
 						>
 							Cerrar
 						</v-btn>
@@ -54,20 +63,33 @@
 		</v-card>
 	</v-dialog>
 </template>
-
 <script>
+import { mapState, mapGetters, mapActions, mapMutations } from 'vuex'
 export default {
 	name: 'Edit',
 	props: ['dialog'],
 	data () {
 		return {
-			
 		}
 	},
 	methods: {
+		...mapActions({
+      updateServices: 'updateServices'
+    }),
 		async update () {
-			
+			await this.updateServices(this.service)
+			this.$emit('updateTable')
+			this.$emit('close')
 		}
+	},
+	computed:{
+		...mapState({
+			service: ({ service: { ServiceSelected } }) => ServiceSelected
+		}),
+		...mapGetters({
+      isLoggedIn: 'isLoggedIn',
+      isAdmin: 'isAdmin',
+    })
 	}
 }
 </script>

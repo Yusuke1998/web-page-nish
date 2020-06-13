@@ -6,8 +6,9 @@ use App\Models\LandingPage;
 use App\User;
 
 class LandingPageController extends Controller {
-	public function __construct(){
-		$this->middleware('auth:api', ['except' => ['index'] ]);
+	public function __construct()
+	{
+		#$this->middleware('auth', ['except' => ['index', 'take'] ]);
 	}
 
 	public function index()

@@ -6,28 +6,43 @@ use App\Models\Service;
 
 class ServiceController extends Controller
 {
-	public function __construct(){
-		$this->middleware('auth:api', ['except' => ['index'] ]);
+	public function __construct()
+    {
+		#$this->middleware('auth:api', ['except' => ['index', 'show'] ]);
 	}
 
     public function index()
     {
-    	$services = Service::all();
+    	$services = Service::orderBy('id', 'DESC')->get();
         return $services;
+    }
+
+    public function show($id)
+    {
+        $service = Service::findOrFail($id);
+        return $service;
     }
 
     public function store(Request $request)
     {
-    	dd($request->all());
+        $service = Service::create($request->all());
+    	return $service;
     }
 
     public function update(Request $request, $id)
     {
-    	dd($request->all());
+        $service = Service::findOrFail($id)
+            ->fill($request->all());
+        $service->save();
+        return $service;
     }
 
     public function destroy($id)
     {
-    	dd($id);
+    	$service = Service::findOrFail($id);
+        $service->delete();
+        return response()->json([
+            "status" => true
+        ]);
     }
 }

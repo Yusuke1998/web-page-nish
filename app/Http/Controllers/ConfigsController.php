@@ -7,8 +7,9 @@ use App\User;
 
 class ConfigsController extends Controller
 {
-	public function __construct(){
-		$this->middleware('auth:api', ['except' => ['index'] ]);
+	public function __construct()
+    {
+		# $this->middleware('auth:api', ['except' => ['index'] ]);
 	}
 
     public function index()

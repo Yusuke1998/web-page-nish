@@ -1,45 +1,32 @@
 <template>
 	<v-dialog v-model="dialog" max-width="600" persistent>
 		<v-card>
+			<v-card-title>
+				<b>Servicio</b>
+			</v-card-title>
 			<v-card-text>
 				<v-row>
-					<v-col
-						cols="12"
-						class="d-flex justify-center"
-					>
-						<span
-							class="primary--text subtitle-2 font-weight-medium"
-						>
-							<b>
-								Crear Servicio
-							</b>
-						</span>
-					</v-col>
-				</v-row>
-				<v-row>
-          <v-col
-            cols="12"
-            class="mt-2"
-          >
-          	<v-text-field
-	            label="Titulo"
-				      v-model="data.title"
-				      outlined
-				    />
-        	</v-col>
-      	</v-row>
-      	<row>
-      		<v-col
-            cols="12"
-            class="mt-2"
-          >
-	      		<v-textarea
-	            label="Contenido"
-	            v-model="data.content"
-				      outlined
-	          />
-	        </v-col>
-    		</row>
+		  <v-col
+			cols="12"
+			class="mt-2"
+		  >
+			<v-text-field
+				label="Titulo"
+					  v-model="service.title"
+					  outlined
+					/>
+			</v-col>
+			<v-col
+			cols="12"
+			class="mt-2"
+		  >
+				<v-textarea
+				label="Contenido"
+				v-model="service.content"
+					  outlined
+			  />
+			</v-col>
+			</v-row>
 			</v-card-text>
 			<v-card-actions class="pa-4 pt-0">
 				<v-row>
@@ -73,22 +60,27 @@
 		</v-card>
 	</v-dialog>
 </template>
-
 <script>
+import { mapState, mapActions, mapMutations } from 'vuex'
 export default {
 	name: 'Create',
 	props: ['dialog'],
 	data () {
 		return {
-			data: {
+			service: {
 				title: '',
 				content: ''
 			}
 		}
 	},
 	methods: {
+		...mapActions({
+	  storeServices: 'storeServices'
+	}),
 		async save () {
-			
+			await this.storeServices(this.service)
+			this.$emit('updateTable')
+			this.$emit('close')
 		}
 	}
 }

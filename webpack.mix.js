@@ -23,6 +23,11 @@ mix.webpackConfig(webpack => {
 });
 
 mix.js('resources/app.js', 'public/js')
-	.sass('resources/sass/app.scss', 'public/css');
+	.sass('resources/sass/app.scss', 'public/css')
+    .styles([
+        'public/assets/css/alertify.min.css',
+        'public/assets/css/default.min.css',
+        'public/assets/css/custom.min.css'
+    ], 'public/css/all.css');
 
 // mix.browserSync('http://127.0.0.1:8000')

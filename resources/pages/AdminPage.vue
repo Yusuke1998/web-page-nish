@@ -1,13 +1,15 @@
 <template>
 	<v-row cols="12">
-		<configs title="CONFIGURACION"></configs>
+		<configs 
+			title="CONFIGURACION" 
+			@update="update"></configs>
 	</v-row>
 </template>
 
 <script>
 
 import Config from '../components/admin/Config'
-import { mapMutations } from 'vuex'
+import { mapMutations, mapActions } from 'vuex'
 
 export default {
 	name:'admin',
@@ -21,13 +23,19 @@ export default {
 		}
 	},
 	methods:{
-	...mapMutations({
-	    setParallax: 'setParallax' 
-	  })
+		...mapMutations({
+				setParallax: 'setParallax' 
+			}),
+		...mapActions({
+				getConfigs: 'getConfigs'
+			}),
+		update(){
+			this.getConfigs()
+		}
 	},
 	components: {
 		'configs': Config
-  }
+	}
 }
 
 </script>
