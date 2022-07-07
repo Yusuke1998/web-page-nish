@@ -39,7 +39,7 @@
     "base64-stream": "^1.0.0",
     "file-loader": "^6.0.0",
     "material-design-icons-iconfont": "^5.0.1",
-    "moment": "^2.24.0",
+    "moment": "^2.29.4",
     "sweetalert": "^2.1.2",
     "toastr": "^2.1.4",
     "vue-alertify": "^1.1.0",
