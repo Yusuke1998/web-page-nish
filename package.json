@@ -49,7 +49,7 @@
     "vue-toasted": "^1.1.28",
     "vue-trumbowyg": "^3.6.0",
     "vuedraggable": "^2.23.2",
-    "vuetify": "^2.2.8",
+    "vuetify": "^2.6.10",
     "vuex": "^3.1.3"
   }
 }
